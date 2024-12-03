@@ -18,7 +18,7 @@ class AdminPolicy
     public function accessAdminPanel(User $user)
     {
         // Define your logic to determine if the user can access the admin panel
-        // For example, you can check if the user has an 'admin' role
+        // For example, puedes verificar si el usuario tiene el rol 'admin'
         return $user->role === 'admin';
     }
 }
