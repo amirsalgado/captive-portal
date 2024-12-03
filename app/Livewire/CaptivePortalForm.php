@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Client;
+use App\Models\Visit;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
@@ -57,8 +58,22 @@ class CaptivePortalForm extends Component
             // Format birth_date to ensure consistent date format
             $validatedData['birth_date'] = Carbon::parse($this->birth_date)->format('Y-m-d');
 
-            // Create client using transaction
-            $client = Client::create($validatedData);
+            // Check if client already exists
+            $client = Client::where('phone_number', $this->phone_number)->first();
+
+            if ($client) {
+                // Update existing client
+                $client->update($validatedData);
+            } else {
+                // Create new client
+                $client = Client::create($validatedData);
+            }
+
+            // Register visit
+            Visit::create([
+                'client_id' => $client->id,
+                'visited_at' => Carbon::now(),
+            ]);
 
             // Clear form fields after successful submission
             $this->reset(['full_name', 'phone_number', 'birth_date']);

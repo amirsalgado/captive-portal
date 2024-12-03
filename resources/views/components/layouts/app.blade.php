@@ -9,7 +9,7 @@
 </head>
 <body class="bg-gray-100">
     <div class="min-h-screen">
-    {{ $slot }}
+        {{ $slot }}
     </div>
     @livewireScripts
     @vite('resources/js/app.js')
