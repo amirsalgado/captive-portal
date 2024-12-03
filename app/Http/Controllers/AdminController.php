@@ -12,8 +12,7 @@ class AdminController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'verified']); // Middleware para seguridad adicional
-        $this->middleware('can:access-admin-panel');
+        $this->middleware('auth');
     }
 
     public function index(): View
