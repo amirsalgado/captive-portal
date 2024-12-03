@@ -1,26 +1,17 @@
-<?php
+@extends('layouts.app')
 
-namespace App\Http\Controllers;
+@section('content')
+    <div class="container">
+        <h1>Dashboard del Administrador</h1>
 
-use App\Models\Client;
-use Illuminate\Http\Request;
-
-class AdminController extends Controller
-{
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    public function index()
-    {
-        $clients = Client::all();
-        $visit_count = $clients->count();
-        $today_visits = $clients->whereDate('created_at', today())->count();
-        $weekly_visits = $clients->whereBetween('created_at', [now()->subWeek(), now()])->count();
-        $monthly_visits = $clients->whereBetween('created_at', [now()->subMonth(), now()])->count();
-        $yearly_visits = $clients->whereBetween('created_at', [now()->subYear(), now()])->count();
-
-        return view('admin.dashboard', compact('visit_count', 'today_visits', 'weekly_visits', 'monthly_visits', 'yearly_visits'));
-    }
-}
+        <div class="card">
+            <div class="card-body">
+                <h5>Total de Visitas: {{ $stats['total_visits'] }}</h5>
+                <p>Visitas de Hoy: {{ $stats['today_count'] }}</p>
+                <p>Visitas Semanales: {{ $stats['weekly_count'] }}</p>
+                <p>Visitas Mensuales: {{ $stats['monthly_count'] }}</p>
+                <p>Visitas Anuales: {{ $stats['yearly_count'] }}</p>
+            </div>
+        </div>
+    </div>
+@endsection
