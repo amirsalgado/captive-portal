@@ -45,12 +45,15 @@ class AdminController extends Controller
             return Client::whereYear('created_at', now()->year)->count();
         });
 
+        $clients = Client::withCount('visits')->get();
+
         $stats = [
             'total_visits' => $visit_count,
             'today_count' => $today_visits,
             'weekly_count' => $weekly_visits,
             'monthly_count' => $monthly_visits,
             'yearly_count' => $yearly_visits,
+            'clients' => $clients,
         ];
 
         return view('admin.dashboard', compact('stats'));

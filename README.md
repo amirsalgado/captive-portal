@@ -64,3 +64,62 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# Captive Portal
+
+## Overview
+This project is a captive portal for managing network access.
+
+## Features
+- User authentication
+- Network access control
+- Usage monitoring
+
+## Requirements
+- PHP
+- MySQL
+- Apache/Nginx
+
+## Installation
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/yourusername/captive-portal.git
+    ```
+2. Navigate to the project directory:
+    ```sh
+    cd captive-portal
+    ```
+3. Install dependencies:
+    ```sh
+    composer install
+    ```
+4. Set up the database:
+    ```sh
+    php artisan migrate
+    ```
+
+## Usage
+1. Start the server:
+    ```sh
+    php artisan serve
+    ```
+2. Open your browser and navigate to `http://localhost:8000`.
+
+## Contributing
+1. Fork the repository.
+2. Create a new branch:
+    ```sh
+    git checkout -b feature-branch
+    ```
+3. Make your changes and commit them:
+    ```sh
+    git commit -m "Description of changes"
+    ```
+4. Push to the branch:
+    ```sh
+    git push origin feature-branch
+    ```
+5. Create a pull request.
+
+## License
+This project is licensed under the MIT License.

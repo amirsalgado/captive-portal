@@ -74,14 +74,14 @@
     </div>--}}
 </div>
 
-@push('scripts')
+{{-- @push('scripts')
 <script>
     // Add any JavaScript needed for the dashboard
     document.addEventListener('DOMContentLoaded', function() {
         // Initialize any dashboard features
     });
 </script>
-@endpush
+@endpush --}}
 
 @push('styles')
 <style>
@@ -94,4 +94,5 @@
     }
 </style>
 @endpush
+
 @endsection
